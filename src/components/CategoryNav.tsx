@@ -1,4 +1,5 @@
 import { Smartphone, Laptop, Tv, Home, Shirt, Dumbbell, Book, Gift } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const categories = [
@@ -23,9 +24,12 @@ const CategoryNav = () => {
               key={category.name}
               variant="ghost"
               className="flex flex-col items-center gap-1 min-w-[80px] h-auto py-2 hover:bg-secondary"
+              asChild
             >
-              <category.icon className="h-5 w-5" />
-              <span className="text-xs font-medium">{category.name}</span>
+              <Link to={`/category/${category.name.toLowerCase()}`}>
+                <category.icon className="h-5 w-5" />
+                <span className="text-xs font-medium">{category.name}</span>
+              </Link>
             </Button>
           ))}
         </div>

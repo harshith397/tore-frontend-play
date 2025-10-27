@@ -1,4 +1,5 @@
 import { ShoppingCart, Search, User, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -8,11 +9,11 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               ApnaStore
             </h1>
-          </div>
+          </Link>
 
           {/* Search Bar */}
           <div className="flex-1 max-w-2xl">
@@ -28,17 +29,23 @@ const Header = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="relative">
-              <Heart className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <Link to="/favourites">
+                <Heart className="h-5 w-5" />
+              </Link>
             </Button>
-            <Button variant="ghost" size="icon" className="relative">
-              <User className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <Link to="/profile">
+                <User className="h-5 w-5" />
+              </Link>
             </Button>
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
-                3
-              </span>
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <Link to="/cart">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                  3
+                </span>
+              </Link>
             </Button>
           </div>
         </div>
